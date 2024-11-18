@@ -90,13 +90,13 @@ textarea {
   border: 2px solid;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="week"],
-input[type="month"],
-input[type="datetime-local"] {
-  height: 15.11px;
-}
+// input[type="date"],
+// input[type="time"],
+// input[type="week"],
+// input[type="month"],
+// input[type="datetime-local"] {
+//  //height: 15.11px;
+// }
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -179,6 +179,10 @@ code {
   }
 
   main {
-    width: 90vw;
+  box-shadow: none;
+   }
+  body{
+    margin: 0;
+    background-color: var(--bg);
   }
 }
