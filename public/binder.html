@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>Orca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../dist/orca.min.css" />
+    <link rel="stylesheet" href="orca.min.css" />
     
     <style>
       .rl {
@@ -55,8 +56,7 @@
         for specific fields (onFieldChanged) or any field changes
         (onAnyFieldChanged).
       </p>
-      <script src="../dist/orca.js"></script>
-      <script src="../dist/orca.binder.js"></script>
+     
 
       <div id="app">
         <h2>Form Elements</h2>
@@ -236,28 +236,7 @@
           </tr>
         </table>
       </div>
-
-      <script>
-        // Initialize the Binder with the app element
-        const binder = new Binder('#app')
-
-        // set inital values if required
-        binder.updateModel('total', 0)
-        binder.updateModel('textarea', 'this is a text binding in the textarea')
-
-        //  Set up callbacks for specific fields
-
-        // on field changed event by field name
-        binder.onFieldChanged('text', newValue => {
-          console.log(`text changed to: ${newValue}`)
-        })
-
-        // on any field change
-        binder2.onAnyFieldChanged((key, value) => {
-          binder2.model['total'] = binder2.model['total'] + 1
-          console.log(`Model updated - ${key}: ${value}`)
-        })
-      </script>
+    
       <h2>Example</h2>
       <code>
         <pre id="example">
@@ -297,7 +276,29 @@
         >
           copy
         </button>
-      </code>
+      </code>  <script src="orca.js"></script>
+      <script src="orca.binder.js"></script>
+      <script>
+        // Initialize the Binder with the app element
+        const binder = new Binder('#app')
+
+        // set inital values if required
+        binder.updateModel('total', 0)
+        binder.updateModel('textarea', 'this is a text binding in the textarea')
+
+        //  Set up callbacks for specific fields
+
+        // on field changed event by field name
+        binder.onFieldChanged('text', newValue => {
+          console.log(`text changed to: ${newValue}`)
+        })
+
+        // on any field change
+        binder2.onAnyFieldChanged((key, value) => {
+          binder2.model['total'] = binder2.model['total'] + 1
+          console.log(`Model updated - ${key}: ${value}`)
+        })
+      </script>
     </main>
   </body>
 </html>

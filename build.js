@@ -4,7 +4,7 @@ const path = require("path");
 
 // Source and destination directories
 const srcDir = "src"; // Where your .scss files are
-const destDir = "dist"; // Where the compiled .css files will be saved
+const destDir = "public"; // Where the compiled .css files will be saved
 
 // Ensure the output directory exists
 if (!fs.existsSync(destDir)) {

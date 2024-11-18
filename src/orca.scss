@@ -4,7 +4,6 @@
   --border-color: black;
   --border-radius: 0.25rem;
   --font-family: Verdana, sans-serif;
-  --font-family-highlight: Georgia, serif;
   --font-color: rgb(0, 0, 0);
 }
 
@@ -12,10 +11,9 @@ body {
   background-color: var(--bg-highlight);
   font-family: var(--font-family);
   color: var(--font-color);
-  font-size: 14px;
-  line-height: 20px;
+   line-height: 20px;
   letter-spacing: 0.5px;
-  text-rendering: optimizeLegibility;
+  
 }
 
 $heading-sizes: (
@@ -30,9 +28,14 @@ $heading-sizes: (
 @each $heading, $size in $heading-sizes {
   #{$heading} {
     font-size: $size;
-    font-family: var(--font-family-highlight);
+    font-family: var(--font-family);
   }
 }
+
+a{
+  font-size:1.15em;
+}
+
 
 main {
   background-color: var(--bg);
