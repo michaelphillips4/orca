@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Orca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/orca.min.css" />
+  </head>
+  <body>
+    <main>
+      <heading class="center">
+        <h1>Orca</h1>
+        <nav>
+          <a href="index.html">home</a> ||
+          <a href="helpers.html">helpers</a> ||
+          <a href="binder.html">binding</a>
+        </nav>
+      </heading>
+
+      <h2>Classes</h2>
+      <h3>.row and col-1 - col-12</h3>
+      <p>
+        These copy a simplified bootstrap logic. They allow you to create rows
+        with segments dived by 12 on large screens and will stack on smaller
+        ones.
+      </p>
+      <h3>.center</h3>
+      <p class="center">Does what it says on the tin. Will center text.</p>
+
+      <h2>Dialog Box</h2>
+      <p>
+        This is a simple pop up. Use the static javascript methods to open and
+        close. The dialog uses the html Dialog element. You can have as many as
+        you want on a page.
+        <br /> <br />
+        <code> Dialog.open("elementId"); Dialog.close("elementId"); </code>
+        <br /> <br />
+        <button type="button" onclick='Dialog.open("dialog1")'>
+          Dialog Example 1
+        </button>
+        <button type="button" onclick='Dialog.open("dialog2")'>
+          Dialog Example 2
+        </button>
+      </p>
+      <code>
+        <x id="dialog"
+          >&lt;button type="button" onclick='Dialog.open("dialog1")'&gt;<br />
+          Dialog Example 1 <br />
+          &lt;/button&gt;
+          <br /><br />
+          &lt;dialog id="dialog1"&gt;<br />
+          &lt;h3&gt;Suspendisse&lt;/h3&gt;
+          <br />
+          &lt;button<br />
+          onclick='Dialog.close("dialog1")'&gt;<br />
+          Close<br />
+          &lt;/button&gt;
+          <br />&lt;/dialog&gt; <br
+        /></x>
+        <button
+          class="copy-button"
+          onclick="navigator.clipboard.writeText(document.getElementById('dialog').innerText)"
+        >
+          copy
+        </button>
+      </code>
+
+      <h2>Hide Show Helper</h2>
+      The hide show helper will hide or show an element by id or by an instance
+      of the element.
+      <br />
+      <code>
+        show('elementId');<br />
+        hide('elementId')
+      </code>
+
+      <h3>Example</h3>
+
+      <button type="button" id="b1" onclick="hide('a');show('b2');hide('b1')">
+        Hide
+      </button>
+      <button type="button" id="b2" onclick="show('a');show('b1');hide('b2')">
+        Show
+      </button>
+      <br />
+      <span id="a">Text to hide</span>
+
+      <dialog id="dialog1">
+        <h3>Pellentesque</h3>
+
+        Pellentesque blandit mauris eget leo scelerisque, ac ullamcorper tortor
+        facilisis.
+        <br />
+        <br />
+
+        <button onclick='Dialog.close("dialog1")'>Close</button>
+      </dialog>
+
+      <dialog id="dialog2">
+        <h3>Suspendisse</h3>
+
+        Suspendisse condimentum luctus arcu, sed bibendum risus mollis in.
+        <br />
+        <br />
+
+        <button onclick='Dialog.close("dialog2")'>Close</button>
+      </dialog>
+    </main>
+    <script src="../dist/orca.js"></script>
+    <script src="../dist/orca.binder.js"></script>
+    <script>
+      hide('b2')
+    </script>
+    <style>
+      .copy-button {
+        float: right;
+      }
+    </style>
+  </body>
+</html>

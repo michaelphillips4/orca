@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Orca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/orca.min.css" />
+  </head>
+  <body>
+    <main>
+      <heading class="center">
+        <h1>Orca</h1>
+        <nav>
+          <a href="index.html">home</a> ||
+          <a href="helpers.html">helpers</a> ||
+          <a href="binder.html">binding</a>
+        </nav>
+      </heading>
+      <section>
+        <p>
+          <b>Orca</b> is simple front end frame work. Its aim is to be easy to
+          learn and use. It offers some basic styling for html tags and has a
+          few easy to use classes. It also had a binding famework and some
+          javscript helper methods. orca.binder class is particularly useful for
+          small projects where you want two-way data binding without pulling in
+          a larger framework like React, Vue, or Angular.
+        </p>
+
+        <h2>Goals</h2>
+        <div class="row">
+          <ul>
+            <li>Responsive</li>
+            <li>Small size (&lt; 2.6kb)</li>
+            <li>Make smart looking pages easily</li>
+          </ul>
+          <ul>
+            <li>Support light/dark themes</li>
+            <li>Css classes to allow responsive rows and cols</li>
+            <li>Css classes to center and hide show elements</li>
+          </ul>
+
+          <ul>
+            <li>Simple binding frame work in javascript (no node)</li>
+            <li>Hide and show helpers</li>
+            <li>Easy Dialog feature</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Setup</h2>
+        <p>Add this css and this js file to you header</p>
+
+        <p>
+          <code>
+            <x id="links">
+              &lt;link rel="stylesheet" href="orca.min.css" /&gt;
+              <br />
+              &lt;script src="orca.binder.js"&gt;&lt;/script&gt;
+              <br />
+              &lt;script src="orca.js"&gt;&lt;/script&gt;
+            </x>
+            <button
+              class="copy-button"
+              onclick="navigator.clipboard.writeText(document.getElementById('links').innerText)"
+            >
+              copy
+            </button>
+          </code>
+        </p>
+      </section>
+      <section>
+        <h2>Typography</h2>
+        <p>
+          Lorem ipsum <b>bold</b> dolor sit amet,<i>italic</i> consectetur
+          adipiscing elit. Quisque varius tincidunt turpis eu luctus. Donec
+          malesuada lectus ligula, sit amet condimentum lectus elementum in. In
+          bibendum dui eu vehicula lobortis. Quisque aliquet congue tortor non
+          malesuada. Duis orci libero, porta sit amet tortor vel, facilisis
+          mattis turpis. Suspendisse potenti. Fusce pulvinar ac tortor sit amet
+          suscipit. Proin molestie, nunc vel venenatis iaculis, urna turpis
+          semper tellus, non hendrerit risus tellus eu neque. Pellentesque quam
+          sapien, maximus a sem sit amet, varius facilisis augue. Mauris
+          interdum leo condimentum odio commodo, vel mollis lacus dignissim.
+          Morbi volutpat bibendum semper. Donec mattis eu metus in condimentum.
+          Donec pellentesque sit amet tellus in auctor. Suspendisse potenti.
+          Integer dapibus, lectus eu venenatis sodales, ex nibh pellentesque
+          velit, vel cursus mauris ligula in nisi. Nam sed purus iaculis,
+          ultrices eros eget, congue eros. Sed vitae tellus id est placerat
+          rhoncus porta et augue. Nullam consequat elementum felis a
+          sollicitudin. Maecenas eget molestie diam. Etiam nec lectus at ante
+          mollis semper. Pellentesque blandit mauris eget leo scelerisque, ac
+          ullamcorper tortor facilisis. Nam dapibus nec tortor sed vehicula.
+          Nullam odio augue, bibendum sed tempus nec, porttitor laoreet est.
+          Vestibulum eu dapibus ipsum, id eleifend quam. Duis non risus tempus,
+          bibendum sem vitae, porttitor ante. Vivamus aliquet augue non
+          vestibulum venenatis. Phasellus ultrices, ex eu fringilla maximus, leo
+          turpis malesuada diam, sed venenatis nunc nisi nec augue. In hac
+          habitasse platea dictumst. Cras turpis orci, facilisis sed risus sit
+          amet, placerat porta magna. Suspendisse condimentum luctus arcu, sed
+          bibendum risus mollis in. Proin velit ex, consequat nec velit porta,
+          fermentum porttitor arcu. Suspendisse non turpis nunc. Sed nec justo
+          eget tellus viverra consequat. Nulla eu vehicula est. Sed pellentesque
+          nulla at tellus tristique tempor eu quis augue. Cras placerat sit amet
+          nibh nec tempus. Vestibulum eleifend tristique dolor a fermentum.
+          Etiam placerat, est vel maximus commodo, sem mi ornare mauris, eu
+          gravida nulla ex eget tortor. Sed accumsan ac nunc non egestas.
+        </p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </section>
+
+      <section>
+        <h2>Tables</h2>
+        <table>
+          <tr>
+            <th>turpis</th>
+            <th>malesuada</th>
+            <th>diam</th>
+          </tr>
+          <tr>
+            <td>ornare</td>
+            <td>mauris</td>
+            <td>eu gravida</td>
+          </tr>
+          <tr>
+            <td>vel</td>
+            <td>maximus</td>
+            <td>commodo</td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>Form Elements</h2>
+
+        <div class="row">
+          <div class="col-4">
+            <label for="text">input type = text</label>
+            <input type="text" />
+
+            <label for="tel">input type = tel</label>
+            <input type="tel" id="tel" />
+
+            <label for="email">input type = email</label>
+            <input type="email" />
+
+            <label for="url">input type = url</label>
+            <input type="url" />
+
+            <label for="password">input type = password</label>
+            <input type="password" />
+
+            <label for="number">input type = number</label>
+            <input type="number" />
+          </div>
+
+          <div class="col-4">
+            <label for="date">input type = date</label>
+            <input type="date" />
+
+            <label for="datetime-local">input type = datetime-local</label>
+            <input type="datetime-local" />
+
+            <label for="month">input type = month</label>
+            <input type="month" />
+
+            <label for="time">input type = time</label>
+            <input type="time" />
+
+            <label for="week">input type = week</label>
+            <input type="week" />
+
+            <label for="select">select</label>
+            <select id="select">
+              <option>item one</option>
+              <option>item two</option>
+              <option>item three</option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <label for="checkbox">input type = checkbox</label>
+
+            <input type="checkbox" />
+
+            <label for="radio">input type = radio</label>
+            <div class="row">
+              <div class="rl">a</div>
+              <div>
+                <input
+                  id="radio1"
+                  type="radio"
+                  name="radio"
+                  value="a"
+                  data-bind="radio"
+                />
+              </div>
+              <div class="pt">b</div>
+              <div>
+                <input type="radio" name="radio" value="b" />
+              </div>
+              <div class="pt">c</div>
+              <div>
+                <input type="radio" name="radio" value="c" />
+              </div>
+            </div>
+
+            <label for="range">input type = range</label>
+            <input type="range" />
+
+            <label for="reset">input type = reset</label>
+            <input type="reset" />
+
+            <label for="textarea">textarea</label><br />
+            <textarea rows="5"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .rl {
+          padding-top: 5px;
+          padding-right: 5px;
+        }
+        .copy-button {
+          float: right;
+        }
+      </style>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["es2016", "dom"], // Add "es2016" or later here
+    "target": "es6", // Specify ECMAScript target version
+    "module": "commonjs", // Specify module code generation
+    "strict": true, // Enable strict type-checking options
+    "esModuleInterop": true, // Enable support for importing CommonJS modules
+    "outDir": "./dist", // Output directory for compiled JavaScript files
+    "rootDir": "./src" // Root directory containing TypeScript files
+  },
+  "include": [
+    "src/**/*.ts" // Include all TypeScript files in the src folder
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules from being compiled
+  ]
+}
