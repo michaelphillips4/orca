@@ -1,6 +1,7 @@
 type ChangeCallback = (newValue: any) => void;
 type GlobalChangeCallback = (key: string, value: any) => void;
 
+
 interface TemplateBinding {
   node: Text;
   key: string;
