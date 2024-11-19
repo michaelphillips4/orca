@@ -139,6 +139,9 @@ class Binder {
                         element.value = this.model[key].value;
                     }
                 }
+                else if (element instanceof HTMLSelectElement) {
+                    element.value = this.model[key];
+                }
                 else {
                     element.textContent = this.model[key];
                 }

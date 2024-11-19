@@ -29,7 +29,7 @@
       </heading>
 
       <p>
-        This Binder class is a robust framework for implementing two-way data
+        This Binder class is a way of implementing two-way data
         binding in JavaScript. It works by syncing a central model object with
         elements in the DOM via custom data-bind and data-display attributes and
         handling template strings like <i>{{ key }}</i
@@ -60,47 +60,48 @@
 
       <div id="app">
         <h2>Form Elements</h2>
+        <p>Type into the form elements below and see the bound value in the table underneath.
 
+        </p>
         <div class="row">
           <div class="col-4">
             <label for="text">input type = text</label>
-            <input type="text" id="text" data-bind="text" />
+            <input type="text" data-bind="textInput" />
 
             <label for="tel">input type = tel</label>
-            <input type="tel" id="tel" data-bind="tel" />
+            <input type="tel" data-bind="telInput" />
 
             <label for="email">input type = email</label>
-            <input type="email" id="email" data-bind="email" />
+            <input type="email" data-bind="emailInput" />
 
             <label for="url">input type = url</label>
-            <input type="url" id="url" data-bind="url" />
+            <input type="url" data-bind="urlInput" />
 
             <label for="password">input type = password</label>
-            <input type="password" id="password" data-bind="password" />
+            <input type="password" data-bind="passwordInput" />
 
             <label for="number">input type = number</label>
-            <input type="number" id="number" data-bind="number" />
+            <input type="number" data-bind="numberInput" />
           </div>
 
           <div class="col-4">
             <label for="date">input type = date</label>
-            <input type="date" id="date" data-bind="date" />
+            <input type="date"  data-bind="dateInput" />
 
             <label for="datetime-local">input type = datetime-local</label>
             <input
               type="datetime-local"
-              id="datetime-local"
-              data-bind="datetimelocal"
+              data-bind="datetimelocalInput"
             />
 
             <label for="month">input type = month</label>
-            <input type="month" id="month" data-bind="month" />
+            <input type="month"  data-bind="monthInput" />
 
             <label for="time">input type = time</label>
-            <input type="time" id="time" data-bind="time" />
+            <input type="time"  data-bind="timeInput" />
 
             <label for="week">input type = week</label>
-            <input type="week" id="week" data-bind="week" />
+            <input type="week" data-bind="weekInput" />
 
             <label for="select">select</label>
             <select id="select" data-bind="select">
@@ -156,57 +157,57 @@
           </tr>
           <tr>
             <td>text</td>
-            <td>{{ text }}</td>
+            <td>{{ textInput}}</td>
             <td>{{ total }}</td>
           </tr>
           <tr>
             <td>tel</td>
-            <td>{{ tel }}</td>
+            <td>{{ telInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>email</td>
-            <td>{{ email }}</td>
+            <td>{{ emailInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>url</td>
-            <td>{{ url }}</td>
+            <td>{{ urlInput }}</td>
             <td>0</td>
           </tr>
           <tr>
-            <td>password</td>
-            <td>{{ password }}</td>
+            <td>password-input</td>
+            <td>{{ passwordInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>number</td>
-            <td>{{ number }}</td>
+            <td>{{ numberInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>date</td>
-            <td>{{ date }}</td>
+            <td>{{ dateInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>datetime-local</td>
-            <td>{{ datetimelocal }}</td>
+            <td>{{ datetimelocalInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>month</td>
-            <td>{{ month }}</td>
+            <td>{{ monthInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>time</td>
-            <td>{{ time }}</td>
+            <td>{{ timeInput }}</td>
             <td>0</td>
           </tr>
           <tr>
             <td>week</td>
-            <td>{{ week }}</td>
+            <td>{{ weekInput }}</td>
             <td>0</td>
           </tr>
           <tr>
@@ -255,14 +256,14 @@ binder.updateModel('textarea','this is a text binding in the textarea')
 <br />  <br />    
 // on field changed event by field name
 <br />    
-binder.onFieldChanged('text', newValue => {<br />   
-    console.log(`Field1 changed to: ${newValue}`)<br />   
+binder.onFieldChanged('text-input', newValue => {<br />   
+    console.log(`text-input changed to: ${newValue}`)<br />   
 })<br />   <br />   
 
 // on any field change<br />   
        
-binder2.onAnyFieldChanged((key, value) => {<br />   
-     binder2.model['total'] = binder2.model['total'] + 1<br />   
+binder.onAnyFieldChanged((key, value) => {<br />   
+     binder.model['total'] = binder.model['total'] + 1<br />   
      console.log(`Model updated - ${key}: ${value}`)<br />   
 })<br />   
 
@@ -275,13 +276,34 @@ binder2.onAnyFieldChanged((key, value) => {<br />
         >
           copy
         </button>
-      </code>  <script src="orca.js"></script>
+ </code><script src="orca.js"></script>
       <script src="orca.binder.js"></script>
+        <div id="app2">
+        <select data-bind="test">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <div>{{test}}</div>
+        </div>
+
+<script>
+  const b2 = new Binder("#app2");
+  b2.onAnyFieldChanged((key, value) => {
+          
+          console.log(`Model updated - ${key}: ${value}`)
+        })
+</script>
+
+     
+      
+      
+      
       <script>
         // Initialize the Binder with the app element
         const binder = new Binder('#app')
 
-        // set inital values if required
+        // set initial values if required
         binder.updateModel('total', 0)
         binder.updateModel('textarea', 'this is a text binding in the textarea')
 
@@ -293,8 +315,8 @@ binder2.onAnyFieldChanged((key, value) => {<br />
         })
 
         // on any field change
-        binder2.onAnyFieldChanged((key, value) => {
-          binder2.model['total'] = binder2.model['total'] + 1
+        binder.onAnyFieldChanged((key, value) => {
+          binder.model['total'] = binder.model['total'] + 1
           console.log(`Model updated - ${key}: ${value}`)
         })
       </script>
