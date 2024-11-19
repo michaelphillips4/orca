@@ -32,7 +32,7 @@
         This Binder class is a robust framework for implementing two-way data
         binding in JavaScript. It works by syncing a central model object with
         elements in the DOM via custom data-bind and data-display attributes and
-        handling template strings like <code>{{ key }}</code
+        handling template strings like <i>{{ key }}</i
         >. Here's a breakdown of its functionality and usage:
       </p>
 
@@ -40,7 +40,7 @@
       <h4>Two-Way Data Binding:</h4>
       <p>
         DOM elements with data-bind attributes
-        <code>&lt;input data-bind="name"&gt;</code> update the model when they
+        <i>&lt;input data-bind="name"&gt;</i> update the model when they
         change. When the model is updated programmatically, the DOM elements
         reflect the changes.
       </p>
@@ -51,7 +51,7 @@
       </p>
       <h4>Template Binding:</h4>
       <p>
-        Dynamically updates text nodes containing <code>{{ key }}</code> with
+        Dynamically updates text nodes containing <i>{{ key }}</i> with
         the corresponding model value. Callbacks: Allows registering callbacks
         for specific fields (onFieldChanged) or any field changes
         (onAnyFieldChanged).
@@ -239,37 +239,36 @@
     
       <h2>Example</h2>
       <code>
-        <pre id="example">
-        &lt;script&gt;     
+        <x id="example">
+&lt;script&gt;  <br />   
       
-        // Initialize the Binder with the app element
+// Initialize the Binder with the app element
+<br />        
+const binder = new Binder('#app')
+<br /> <br />     
+// set initial values if required
+<br />        
+binder.updateModel('total', 0)<br />   
+binder.updateModel('textarea','this is a text binding in the textarea')
+<br />  <br />    
+// Set up callbacks for specific fields
+<br />  <br />    
+// on field changed event by field name
+<br />    
+binder.onFieldChanged('text', newValue => {<br />   
+    console.log(`Field1 changed to: ${newValue}`)<br />   
+})<br />   <br />   
+
+// on any field change<br />   
        
-        const binder = new Binder('#app')
+binder2.onAnyFieldChanged((key, value) => {<br />   
+     binder2.model['total'] = binder2.model['total'] + 1<br />   
+     console.log(`Model updated - ${key}: ${value}`)<br />   
+})<br />   
 
-        // set inital values if required
-     
-        binder.updateModel('total', 0)
-        binder.updateModel('textarea','this is a text binding in the textarea')
+&lt;script/&gt;<br />   
 
-        // Set up callbacks for specific fields
-     
-        // on field changed event by field name
-    
-        binder.onFieldChanged('text', newValue => {
-                console.log(`Field1 changed to: ${newValue}`)
-                })
-
-        // on any field change
-       
-        binder2.onAnyFieldChanged((key, value) => {
-                binder2.model['total'] = binder2.model['total'] + 1
-                console.log(`Model updated - ${key}: ${value}`)
-        })
-
-        &lt;script/&gt;
-
-  </pre
-        >
+</x>
         <button
           class="copy-button"
           onclick="navigator.clipboard.writeText(document.getElementById('example').innerText)"

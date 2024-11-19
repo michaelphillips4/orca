@@ -16,21 +16,78 @@ body {
   
 }
 
-$heading-sizes: (
-  h1: clamp(2rem, 5vw, 3rem),
-  h2: clamp(1.75rem, 4vw, 2.5rem),
-  h3: clamp(1.5rem, 3vw, 2rem),
-  h4: clamp(1.25rem, 2vw, 1.5rem),
-  h5: clamp(1rem, 1.5vw, 1.25rem),
-);
+// Define base font sizes using variables
+$font-size-h1: 3.5rem;
+$font-size-h2: 2.8rem;
+$font-size-h3: 2.2rem;
+$font-size-h4: 1.8rem;
+$font-size-h5: 1.5rem;
+$font-size-h6: 1.2rem;
 
-// Apply sizes using a loop
-@each $heading, $size in $heading-sizes {
-  #{$heading} {
-    font-size: $size;
-    font-family: var(--font-family);
+// Define breakpoints (optional)
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+h1 {
+  font-size: $font-size-h1;
+  line-height: $font-size-h1; 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2.5rem; // Smaller font size for small screens
+  }
+  @media (max-width: $breakpoint-md) {
+    font-size: 3rem; // Adjust font size for medium screens
   }
 }
+
+h2 {
+  font-size: $font-size-h2;
+  line-height: $font-size-h2; 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2.2rem;
+  }
+  @media (max-width: $breakpoint-md) {
+    font-size: 2.6rem;
+  }
+}
+
+h3 {
+  font-size: $font-size-h3;
+  line-height: $font-size-h3; 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.9rem;
+  }
+  @media (max-width: $breakpoint-md) {
+    font-size: 2.2rem;
+  }
+}
+
+h4 {
+  font-size: $font-size-h4;
+  line-height: $font-size-h4; 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.6rem;
+  }
+}
+
+h5 {
+  font-size: $font-size-h5;
+  line-height: $font-size-h5; 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.4rem;
+  }
+}
+
+h6 {
+  font-size: $font-size-h6;
+  line-height: $font-size-h6; 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.2rem;
+  }
+}
+
+
 
 a{
   font-size:1.15em;
@@ -141,13 +198,14 @@ table {
 
 code {
   border: 1px solid var(--border-color);
-  padding: 10px;
+  padding: 5px 10px;
   background-color: var(--bg-highlight);
   text-align: left;
   text-decoration: none;
-  display: inline-block;
+  display:inline-block;
   border-radius: var(--border-radius);
 }
+
 
 // Utility classes
 .center {
