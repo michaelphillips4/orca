@@ -129,11 +129,7 @@ button {
   color: inherit;
 }
 
-// Form elements
-input,
-select {
-  display: block;
-}
+
 
 input,
 select,
@@ -145,7 +141,20 @@ textarea {
   border-radius: var(--border-radius);
   width: 80%;
   border: 2px solid;
-  min-height: 15px;
+  
+}
+
+// Form elements
+input,
+select {
+  display: block;
+  min-height: 17px;
+}
+
+
+select {
+  width: 87%; 
+  min-height: 3em;
 }
 
 input[type="date"],
