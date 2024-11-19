@@ -100,9 +100,6 @@
             <label for="time">input type = time</label>
             <input type="time"  data-bind="timeInput" />
 
-            <label for="week">input type = week</label>
-            <input type="week" data-bind="weekInput" />
-
             <label for="select">select</label>
             <select id="select" data-bind="select">
               <option>item one</option>
@@ -206,11 +203,6 @@
             <td>0</td>
           </tr>
           <tr>
-            <td>week</td>
-            <td>{{ weekInput }}</td>
-            <td>0</td>
-          </tr>
-          <tr>
             <td>select</td>
             <td>{{ select }}</td>
             <td>0</td>
@@ -278,22 +270,22 @@ binder.onAnyFieldChanged((key, value) => {<br />
         </button>
  </code><script src="orca.js"></script>
       <script src="orca.binder.js"></script>
-        <div id="app2">
+        <!-- <div id="app2">
         <select data-bind="test">
           <option>1</option>
           <option>2</option>
           <option>3</option>
         </select>
         <div>{{test}}</div>
-        </div>
+        </div> -->
 
-<script>
+<!-- <script>
   const b2 = new Binder("#app2");
   b2.onAnyFieldChanged((key, value) => {
           
           console.log(`Model updated - ${key}: ${value}`)
         })
-</script>
+</script> -->
 
      
       

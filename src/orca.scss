@@ -145,11 +145,11 @@ textarea {
   border-radius: var(--border-radius);
   width: 80%;
   border: 2px solid;
+  min-height: 15px;
 }
 
 input[type="date"],
 input[type="time"],
-input[type="week"],
 input[type="month"],
 input[type="datetime-local"] {
  //height: 15.11px;
