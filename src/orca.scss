@@ -154,22 +154,17 @@ select {
 
 select {
   width: 87%; 
-  min-height: 3em;
-  font-size: 20px;
-  
+ 
 }
 
 input[type="date"],
 input[type="time"],
 input[type="month"],
 input[type="datetime-local"] {
- //height: 15.11px;
+ height: 15.11px;
  display:block;
  font-size: 20px; 
- /* Solution 1 */
-  -webkit-appearance: textfield;
- -moz-appearance: textfield;
- min-height: 1.2em; 
+ 
 
 }
 
@@ -262,4 +257,22 @@ code {
     margin: 0;
     background-color: var(--bg);
   }
+
+  input[type="date"],
+input[type="time"],
+input[type="month"],
+input[type="datetime-local"] {
+ 
+ font-size: 20px; 
+ /* Solution 1 */
+ -webkit-appearance: textfield;
+ -moz-appearance: textfield;
+ min-height: 1.2em; 
+
+}
+select {
+ 
+  min-height: 3em;
+  font-size: 20px;
+}
 }
