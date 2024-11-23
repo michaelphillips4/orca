@@ -1,19 +1,11 @@
+// css variable - honour light-dark if overriding one with : )
 :root {
-  --bg: white;
-  --bg-highlight: rgb(247, 248, 247);
-  --border-color: black;
+  --bg: light-dark(white, #100c08);
+  --bg-highlight: light-dark(rgb(247, 248, 247), rgb(62, 60, 60));
+  --border-color: #100c08;
   --border-radius: 0.25rem;
   --font-family: Verdana, sans-serif;
-  --font-color: rgb(0, 0, 0);
-}
-
-body {
-  background-color: var(--bg-highlight);
-  font-family: var(--font-family);
-  color: var(--font-color);
-   line-height: 20px;
-  letter-spacing: 0.5px;
-  
+  --font-color: light-dark(#100c08, rgb(230, 230, 230));
 }
 
 // Define base font sizes using variables
@@ -24,15 +16,23 @@ $font-size-h4: 1.8rem;
 $font-size-h5: 1.5rem;
 $font-size-h6: 1.2rem;
 
-// Define breakpoints (optional)
+//breakpoints
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 
+body {
+  background-color: var(--bg-highlight);
+  font-family: var(--font-family);
+  color: var(--font-color);
+  line-height: 20px;
+  letter-spacing: 0.5px;
+}
+
 h1 {
   font-size: $font-size-h1;
-  line-height: $font-size-h1; 
+  line-height: $font-size-h1;
   @media (max-width: $breakpoint-sm) {
     font-size: 2.5rem; // Smaller font size for small screens
   }
@@ -43,7 +43,7 @@ h1 {
 
 h2 {
   font-size: $font-size-h2;
-  line-height: $font-size-h2; 
+  line-height: $font-size-h2;
   @media (max-width: $breakpoint-sm) {
     font-size: 2.2rem;
   }
@@ -54,7 +54,7 @@ h2 {
 
 h3 {
   font-size: $font-size-h3;
-  line-height: $font-size-h3; 
+  line-height: $font-size-h3;
   @media (max-width: $breakpoint-sm) {
     font-size: 1.9rem;
   }
@@ -65,7 +65,7 @@ h3 {
 
 h4 {
   font-size: $font-size-h4;
-  line-height: $font-size-h4; 
+  line-height: $font-size-h4;
   @media (max-width: $breakpoint-sm) {
     font-size: 1.6rem;
   }
@@ -73,7 +73,7 @@ h4 {
 
 h5 {
   font-size: $font-size-h5;
-  line-height: $font-size-h5; 
+  line-height: $font-size-h5;
   @media (max-width: $breakpoint-sm) {
     font-size: 1.4rem;
   }
@@ -81,23 +81,20 @@ h5 {
 
 h6 {
   font-size: $font-size-h6;
-  line-height: $font-size-h6; 
+  line-height: $font-size-h6;
   @media (max-width: $breakpoint-sm) {
     font-size: 1.2rem;
   }
 }
 
-
-
-a{
-  font-size:1.15em;
+a {
+  font-size: 1.15em;
 }
-
 
 main {
   background-color: var(--bg);
   border-radius: 10px;
-  padding: 1vw 2vw 1vw;
+  padding: 0.5vh 2vw 1vw;
   margin: 1vw auto;
   min-height: 95vh;
   width: 40vw;
@@ -129,8 +126,6 @@ button {
   color: inherit;
 }
 
-
-
 input,
 select,
 textarea {
@@ -141,7 +136,6 @@ textarea {
   border-radius: var(--border-radius);
   width: 80%;
   border: 2px solid;
-  
 }
 
 // Form elements
@@ -151,21 +145,17 @@ select {
   min-height: 17px;
 }
 
-
 select {
-  width: 87%; 
- 
+  width: 87%;
 }
 
 input[type="date"],
 input[type="time"],
 input[type="month"],
 input[type="datetime-local"] {
- height: 15.11px;
- display:block;
- font-size: 20px; 
- 
-
+  height: 15.11px;
+  display: block;
+  font-size: 20px;
 }
 
 input[type="checkbox"],
@@ -216,13 +206,13 @@ code {
   background-color: var(--bg-highlight);
   text-align: left;
   text-decoration: none;
-  display:inline-block;
+  display: inline-block;
   border-radius: var(--border-radius);
 }
 
-
 // Utility classes
 .center {
+  align-content: center;
   text-align: center;
 }
 
@@ -241,7 +231,7 @@ code {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: $breakpoint-md) {
   .row {
     flex-direction: column;
   }
@@ -251,28 +241,25 @@ code {
   }
 
   main {
-  box-shadow: none;
-   }
-  body{
+    box-shadow: none;
+  }
+  body {
     margin: 0;
     background-color: var(--bg);
   }
 
   input[type="date"],
-input[type="time"],
-input[type="month"],
-input[type="datetime-local"] {
- 
- font-size: 20px; 
- /* Solution 1 */
- -webkit-appearance: textfield;
- -moz-appearance: textfield;
- min-height: 1.2em; 
-
-}
-select {
- 
-  min-height: 3em;
-  font-size: 20px;
-}
+  input[type="time"],
+  input[type="month"],
+  input[type="datetime-local"] {
+    font-size: 20px;
+    /* Solution 1 */
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 1.2em;
+  }
+  select {
+    min-height: 3em;
+    font-size: 20px;
+  }
 }
