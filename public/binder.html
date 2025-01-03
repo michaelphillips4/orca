@@ -5,7 +5,7 @@
     <title>Orca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="orca.min.css" />
-    
+
     <style>
       .rl {
         padding-top: 5px;
@@ -15,90 +15,77 @@
         float: right;
       }
     </style>
-
   </head>
   <body>
     <main>
       <heading class="center">
         <h1>Orca</h1>
         <nav>
-             <a href="/">home</a> ||
-          <a href="helpers.html">helpers</a> ||
+          <a href="/">home</a> || <a href="helpers.html">helpers</a> ||
           <a href="binder.html">binding</a>
         </nav>
       </heading>
 
       <p>
-        This Binder class is a way of implementing two-way data
-        binding in JavaScript. It works by syncing a central model object with
-        elements in the DOM via custom data-bind and data-display attributes and
-        handling template strings like <i>{{ key }}</i
-        >. Here's a breakdown of its functionality and usage:
+        This Binder class is a way of implementing two-way data binding in
+        JavaScript. It works by syncing a central model object with elements in
+        the DOM via custom data-bind attribute. Here's a breakdown of its
+        functionality and usage:
       </p>
 
       <h3>Key Features</h3>
       <h4>Two-Way Data Binding:</h4>
       <p>
         DOM elements with data-bind attributes
-        <i>&lt;input data-bind="name"&gt;</i> update the model when they
-        change. When the model is updated programmatically, the DOM elements
-        reflect the changes.
+        <i>&lt;input data-bind="name"&gt;</i> update the model when they change.
+        When the model is updated programmatically, the DOM elements reflect the
+        changes.
       </p>
       <h4>Event Handling:</h4>
       <p>
         Different input types (e.g., text, checkbox, radio, range) are handled
         correctly. Supports grouped checkboxes for multi-value bindings.
       </p>
-      <h4>Template Binding:</h4>
-      <p>
-        Dynamically updates text nodes containing <i>{{ key }}</i> with
-        the corresponding model value. Callbacks: Allows registering callbacks
-        for specific fields (onFieldChanged) or any field changes
-        (onAnyFieldChanged).
-      </p>
-     
 
       <div id="app">
         <h2>Form Elements</h2>
-        <p>Type into the form elements below and see the bound value in the table underneath.
-
+        <p>
+          Type into the form elements below and see the bound value in the table
+          underneath.
         </p>
         <div class="row">
           <div class="col-4">
             <label for="text">input type = text</label>
-            <input type="text" data-bind="textInput" />
+            <input type="text" data-bind="name" />
 
             <label for="tel">input type = tel</label>
-            <input type="tel" data-bind="telInput" />
+            <input type="tel" data-bind="tel" />
 
             <label for="email">input type = email</label>
-            <input type="email" data-bind="emailInput" />
+            <input type="email" data-bind="email" />
 
             <label for="url">input type = url</label>
-            <input type="url" data-bind="urlInput" />
+            <input type="url" data-bind="url" />
 
             <label for="password">input type = password</label>
-            <input type="password" data-bind="passwordInput" />
+            <input type="password" data-bind="word" />
 
             <label for="number">input type = number</label>
-            <input type="number" data-bind="numberInput" />
+            <input type="number" data-bind="number" />
           </div>
 
           <div class="col-4">
             <label for="date">input type = date</label>
-            <input type="date"  data-bind="dateInput" />
+            <input type="date" data-bind="dob" />
 
             <label for="datetime-local">input type = datetime-local</label>
-            <input
-              type="datetime-local"
-              data-bind="datetimelocalInput"
-            />
+            <input type="datetime-local" data-bind="datetimelocalInput" />
 
             <label for="month">input type = month</label>
-            <input type="month"  data-bind="monthInput" />
+            <input type="month" data-bind="monthInput" />
 
             <label for="time">input type = time</label>
-            <input type="time"  data-bind="timeInput" />
+            <input type="time" data-bind="timeInput" />
 
             <label for="select">select</label>
             <select id="select" data-bind="select">
@@ -118,7 +105,7 @@
               <div class="rl">a</div>
               <div>
                 <input
-                  id="radio1"
+                 
                   type="radio"
                   name="radio"
                   value="a"
@@ -154,166 +141,128 @@
           </tr>
           <tr>
             <td>text</td>
-            <td>{{ textInput}}</td>
+            <td data-bind="name"></td>
             <td>{{ total }}</td>
           </tr>
           <tr>
             <td>tel</td>
-            <td>{{ telInput }}</td>
+            <td data-bind="tel"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>email</td>
-            <td>{{ emailInput }}</td>
+            <td data-bind="email"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>url</td>
-            <td>{{ urlInput }}</td>
+            <td data-bind="url"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>password-input</td>
-            <td>{{ passwordInput }}</td>
+            <td data-bind="word"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>number</td>
-            <td>{{ numberInput }}</td>
+            <td data-bind="number"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>date</td>
-            <td>{{ dateInput }}</td>
+            <td data-bind="dob"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>datetime-local</td>
-            <td>{{ datetimelocalInput }}</td>
+            <td data-bind="datetimelocalInput"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>month</td>
-            <td>{{ monthInput }}</td>
+            <td data-bind="monthInput"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>time</td>
-            <td>{{ timeInput }}</td>
+            <td data-bind="timeInput"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>select</td>
-            <td>{{ select }}</td>
+            <td data-bind="select"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>checkbox</td>
-            <td>{{ checkbox }}</td>
+            <td data-bind="checkbox"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>radio</td>
-            <td>{{ radio }}</td>
+            <td data-bind="radio"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>range</td>
-            <td>{{ range }}</td>
+            <td data-bind="range"></td>
             <td>0</td>
           </tr>
           <tr>
             <td>textarea</td>
-            <td>{{ textarea }}</td>
+            <td data-bind="textarea"></td>
             <td>0</td>
           </tr>
         </table>
       </div>
-    
+
       <h2>Example</h2>
       <code>
         <x id="example">
-&lt;script&gt;  <br />   
-      
-// Initialize the Binder with the app element
-<br />        
-const binder = new Binder('#app')
-<br /> <br />     
-// set initial values if required
-<br />        
-binder.updateModel('total', 0)<br />   
-binder.updateModel('textarea','this is a text binding in the textarea')
-<br />  <br />    
-// Set up callbacks for specific fields
-<br />  <br />    
-// on field changed event by field name
-<br />    
-binder.onFieldChanged('text-input', newValue => {<br />   
-    console.log(`text-input changed to: ${newValue}`)<br />   
-})<br />   <br />   
+          &lt;script&gt; 
+          <br /><br />
+          // define model if required for initial load.
+          <br />
+          const model = { name: "Bert",dob:"2001-04-23", number: 30 };
+          <br /> <br />
+          // define model changed method if required.
+          <br /> 
+          const modelChanged = (key, value)=> {
+             console.log(key,value);
+          }
+          <br /><br />
+          // Initialize the Binder with the app element , model and modelChanged method,
+          <br />
+          new Binder("app", model, modelChanged);
+          <br />
+          <br />
+  
 
-// on any field change<br />   
-       
-binder.onAnyFieldChanged((key, value) => {<br />   
-     binder.model['total'] = binder.model['total'] + 1<br />   
-     console.log(`Model updated - ${key}: ${value}`)<br />   
-})<br />   
-
-&lt;script/&gt;<br />   
-
-</x>
+          &lt;script/&gt;<br />
+        </x>
         <button
           class="copy-button"
           onclick="navigator.clipboard.writeText(document.getElementById('example').innerText)"
         >
           copy
         </button>
- </code><script src="orca.js"></script>
+      </code>
+      <script src="orca.js"></script>
       <script src="orca.binder.js"></script>
-        <!-- <div id="app2">
-        <select data-bind="test">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
-        <div>{{test}}</div>
-        </div> -->
 
-<!-- <script>
-  const b2 = new Binder("#app2");
-  b2.onAnyFieldChanged((key, value) => {
-          
-          console.log(`Model updated - ${key}: ${value}`)
-        })
-</script> -->
-
-     
-      
-      
-      
       <script>
-        // Initialize the Binder with the app element
-        const binder = new Binder('#app')
+          const model = { name: "Bert",dob:"2001-04-23", number: 30 };
 
-        // set initial values if required
-        binder.updateModel('total', 0)
-        binder.updateModel('textarea', 'this is a text binding in the textarea')
-
-        //  Set up callbacks for specific fields
-
-        // on field changed event by field name
-        binder.onFieldChanged('text', newValue => {
-          console.log(`text changed to: ${newValue}`)
-        })
-
-        // on any field change
-        binder.onAnyFieldChanged((key, value) => {
-          binder.model['total'] = binder.model['total'] + 1
-          console.log(`Model updated - ${key}: ${value}`)
-        })
+          const modelChanged = (key, value)=> {
+             console.log(key,value);
+          }
+          new Binder("app", model, modelChanged);
+      
       </script>
     </main>
-    <footer class="center">v1 by Michael Phillips <a href="http:\\www.area2.co.uk">Home</a></footer>
- 
+    <footer class="center">
+      v1 by Michael Phillips <a href="http:\\www.area2.co.uk">Home</a>
+    </footer>
   </body>
 </html>

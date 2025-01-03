@@ -1,161 +1,85 @@
 "use strict";
 class Binder {
-    constructor(containerSelector) {
-        this.model = {};
-        this.bindings = {};
-        this.changeCallbacks = {};
-        this.globalChangeCallback = null;
-        this.templateBindings = [];
-        const container = document.querySelector(containerSelector);
-        if (!container) {
-            throw new Error(`Container with selector "${containerSelector}" not found.`);
+    constructor(appId, model, modelChangedCallback) {
+        this.items = [];
+        this.inputTypes = ["INPUT", "TEXTAREA", "SELECT"];
+        this.tickable = ["checkbox", "radio"];
+        this.model = model;
+        this.modelChangedCallback = modelChangedCallback;
+        const appElement = document.getElementById(appId);
+        if (!appElement) {
+            throw new Error(`No element with the appId found: ${appId}`);
         }
-        this.container = container;
-        this.initBindings();
-        this.scanTemplates();
+        this.app = appElement;
+        this.load();
     }
-    // Initialize bindings by scanning the container
-    initBindings() {
-        this.container
-            .querySelectorAll("[data-bind]")
-            .forEach((element) => {
+    load() {
+        const elements = this.app.querySelectorAll("[data-bind]");
+        elements.forEach((element) => {
             const key = element.getAttribute("data-bind");
-            if (!key)
-                return;
-            this.bindings[key] = this.bindings[key] || [];
-            if (element) {
-                const formElement = element;
-                if (formElement.type === "radio") {
-                    formElement.addEventListener("change", (event) => {
-                        const target = event.target;
-                        if (target.checked) {
-                            this.updateModel(key, target.value);
-                        }
-                    });
-                }
-                else if (formElement.type === "checkbox") {
-                    formElement.addEventListener("change", (event) => {
-                        const checkboxes = this.container.querySelectorAll(`[data-bind="${key}"]`);
-                        if (checkboxes.length > 1) {
-                            // Handle grouped checkboxes
-                            const values = Array.from(checkboxes)
-                                .filter((cb) => cb.checked)
-                                .map((cb) => cb.value);
-                            this.updateModel(key, values);
-                        }
-                        else {
-                            // Handle a single checkbox
-                            const target = event.target;
-                            if (target.checked) {
-                                this.updateModel(key, target.checked);
-                            }
-                        }
-                    });
-                }
-                else if (formElement.type === "range") {
-                    formElement.addEventListener("input", (event) => {
-                        const target = event.target;
-                        this.updateModel(key, target.value);
-                    });
-                }
-                else {
-                    formElement.addEventListener("input", (event) => {
-                        const target = event.target;
-                        this.updateModel(key, target.value);
-                    });
-                    formElement.addEventListener("change", (event) => {
-                        const target = event.target;
-                        this.updateModel(key, target.value);
-                    });
-                }
-                this.bindings[key].push(formElement);
+            if (key) {
+                this.addElement(element, key, this.model);
             }
         });
-        // Bind display elements
-        this.container.querySelectorAll("[data-display]").forEach((element) => {
-            const key = element.getAttribute("data-display");
-            if (!key)
-                return;
-            this.bindings[key] = this.bindings[key] || [];
-            this.bindings[key].push(element);
-        });
     }
-    // Scan the container for template bindings like {{fieldName}}
-    scanTemplates() {
-        var _a;
-        const walker = document.createTreeWalker(this.container, NodeFilter.SHOW_TEXT, null);
-        while (walker.nextNode()) {
-            const node = walker.currentNode;
-            const matches = (_a = node.nodeValue) === null || _a === void 0 ? void 0 : _a.match(/{{\s*([\w]+)\s*}}/g);
-            if (matches) {
-                matches.forEach((match) => {
-                    var _a;
-                    const key = match.replace(/{{\s*|\s*}}/g, ""); // Extract key from {{key}}
-                    this.templateBindings.push({
-                        node,
-                        key,
-                        template: node.nodeValue,
-                    });
-                    // Replace {{fieldName}} tokens with an empty string initially
-                    node.nodeValue = ((_a = node.nodeValue) === null || _a === void 0 ? void 0 : _a.replace(match, "")) || "";
-                });
+    addElement(element, key, model) {
+        this.items.push(element);
+        this.updateElementValue(element, model[key]);
+        if (this.inputTypes.includes(element.tagName)) {
+            const inputElement = element;
+            if (this.tickable.includes(inputElement.type)) {
+                inputElement.addEventListener("change", (e) => this.tickableElementChangeHandler(e));
+            }
+            else {
+                inputElement.addEventListener("input", () => this.inputHandler(inputElement, key));
             }
         }
     }
-    // Register a callback for when a specific model key changes
-    onFieldChanged(key, callback) {
-        this.changeCallbacks[key] = callback;
-    }
-    // Register a global callback for any model value change
-    onAnyFieldChanged(callback) {
-        this.globalChangeCallback = callback;
-    }
-    // Update the model and all bound elements
-    updateModel(key, value) {
+    tickableElementChangeHandler(event) {
+        var _a, _b;
+        const target = event.target;
+        const key = target.getAttribute("data-bind");
+        if (!key)
+            return;
+        const value = (_b = (_a = document.querySelector(`[data-bind="${key}"]:checked`)) === null || _a === void 0 ? void 0 : _a.value) !== null && _b !== void 0 ? _b : "";
         this.model[key] = value;
-        this.updateBindings(key);
-        // Trigger specific field callback if it exists
-        if (this.changeCallbacks[key]) {
-            this.changeCallbacks[key](value);
-        }
-        // Trigger global callback if it exists
-        if (this.globalChangeCallback) {
-            this.globalChangeCallback(key, value);
-        }
-        // Update template bindings
-        this.updateTemplateBindings();
+        this.modelValueChangedHandler(key, value);
     }
-    // Update all bound elements for a given key
-    updateBindings(key) {
-        if (this.bindings[key]) {
-            this.bindings[key].forEach((element) => {
-                if (element instanceof HTMLFormElement) {
-                    if (element.type === "radio" || element.type === "checkbox") {
-                        element.checked = Array.isArray(this.model[key])
-                            ? this.model[key].includes(element.value)
-                            : this.model[key] === element.value || this.model[key] === true;
-                    }
-                    else {
-                        element.value = this.model[key].value;
-                    }
-                }
-                else if (element instanceof HTMLSelectElement) {
-                    element.value = this.model[key];
-                }
-                else {
-                    element.textContent = this.model[key];
-                }
-            });
-        }
+    inputHandler(element, key) {
+        var _a;
+        const value = (_a = element.value) !== null && _a !== void 0 ? _a : "";
+        this.model[key] = value;
+        this.modelValueChangedHandler(key, value);
     }
-    // Update all template bindings
-    updateTemplateBindings() {
-        this.templateBindings.forEach(({ node, key, template }) => {
-            if (this.model[key] !== undefined) {
-                node.nodeValue = template.replace(/{{\s*([\w]+)\s*}}/g, (_, field) => {
-                    return this.model[field] !== undefined ? this.model[field] : "";
-                });
+    modelValueChangedHandler(property, value) {
+        const toChange = this.items.filter((v) => v.getAttribute("data-bind") === property);
+        toChange.forEach((e) => {
+            const element = e;
+            if (this.tickable.includes(element.type)) {
+                if (element.value === value) {
+                    element.checked = true;
+                }
+            }
+            else {
+                this.updateElementValue(e, value);
             }
         });
+        this.modelChangedCallback(property, value);
+    }
+    updateElementValue(element, value) {
+        if (value === undefined)
+            return;
+        if (this.inputTypes.includes(element.tagName)) {
+            const inputElement = element;
+            if (this.tickable.includes(inputElement.type)) {
+                inputElement.checked = Boolean(value);
+            }
+            else {
+                inputElement.value = value;
+            }
+        }
+        else {
+            element.textContent = value;
+        }
     }
 }
