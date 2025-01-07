@@ -9,6 +9,7 @@
   --font-color: light-dark(#100c08, rgb(230, 230, 230));
 }
 
+
 // Define base font sizes using variables
 $font-size-h1: 3.5rem;
 $font-size-h2: 2.8rem;
@@ -29,6 +30,7 @@ body {
   color: var(--font-color);
   line-height: 20px;
   letter-spacing: 0.5px;
+  margin: 0;
 }
 
 h1 {
