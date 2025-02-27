@@ -150,7 +150,7 @@ textarea {
   margin: 6px 20px 6px 0;
   padding: 10px;
   border-radius: var(--border-radius);
-  width: 80%;
+  width: 90%;
   border: 2px solid;
 }
 
@@ -162,7 +162,7 @@ select {
 }
 
 select {
-  width: 87%;
+  width: 98%;
 }
 
 input[type="date"],
@@ -239,6 +239,7 @@ code {
   text-decoration: none;
   display: inline-block;
   border-radius: var(--border-radius);
+  max-width: 90vw;
 }
 
 // Utility classes
@@ -275,6 +276,7 @@ code {
 
   [class*="col-"] {
     width: 100%;
+    
   }
 
   main {
@@ -282,14 +284,14 @@ code {
   }
   body {
     margin: 0;
-    
+    background-color: var(--bg);
   }
 
   input[type="date"],
   input[type="time"],
   input[type="month"],
   input[type="datetime-local"] {
-    font-size: 20px;
+    font-size: 14px;
     /* Solution 1 */
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -297,6 +299,6 @@ code {
   }
   select {
     min-height: 3em;
-    font-size: 20px;
+    font-size: 14px;
   }
 }
