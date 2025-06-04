@@ -125,7 +125,6 @@ dialog {
   border: 0.5px solid var(--border-color);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-  background-color: inherit;
   color: inherit;
 }
 
@@ -148,7 +147,7 @@ textarea {
   background-color: var(--bg-highlight);
   color: inherit;
   margin: 6px 20px 6px 0;
-  padding: 10px;
+  padding: 5px;
   border-radius: var(--border-radius);
   width: 90%;
   border: 2px solid;
@@ -172,6 +171,7 @@ input[type="datetime-local"] {
   height: 15.11px;
   display: block;
   font-size: 20px;
+  padding: 10px;
 }
 
 input[type="checkbox"],
@@ -296,9 +296,10 @@ code {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     min-height: 1.2em;
+     padding: 5px;
   }
   select {
-    min-height: 3em;
+    //min-height: 3em;
     font-size: 14px;
   }
 }
