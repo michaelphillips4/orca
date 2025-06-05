@@ -144,6 +144,7 @@ button {
 input,
 select,
 textarea {
+ 
   background-color: var(--bg-highlight);
   color: inherit;
  // margin: 6px 20px 6px 0;
@@ -162,6 +163,8 @@ select {
 
 select {
   width: 94%;
+  font-size:medium;
+   -webkit-appearance: none;
 }
 
 
