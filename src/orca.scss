@@ -1,6 +1,6 @@
 // css variable - honour light-dark if overriding one with : )
 :root {
-  color-scheme: light dark ;
+  color-scheme: light dark;
   --bg: light-dark(white, #100c08);
   --bg-highlight: light-dark(rgb(247, 248, 247), rgb(62, 60, 60));
   --border-color: #100c08;
@@ -8,7 +8,6 @@
   --font-family: Verdana, sans-serif;
   --font-color: light-dark(#100c08, rgb(230, 230, 230));
 }
-
 
 // Define base font sizes using variables
 $font-size-h1: 3.5rem;
@@ -33,22 +32,20 @@ body {
   margin: 0;
 }
 
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top:5px;
-  margin-bottom:10px;;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
-
 
 h1 {
   font-size: $font-size-h1;
   line-height: $font-size-h1;
- 
+
   @media (max-width: $breakpoint-sm) {
     font-size: 2.5rem; // Smaller font size for small screens
   }
@@ -144,10 +141,9 @@ button {
 input,
 select,
 textarea {
- 
   background-color: var(--bg-highlight);
   color: inherit;
- // margin: 6px 20px 6px 0;
+  // margin: 6px 20px 6px 0;
   padding: 5px;
   border-radius: var(--border-radius);
   width: 90%;
@@ -163,21 +159,19 @@ select {
 
 select {
   width: 94%;
-  font-size:medium;
-   -webkit-appearance: none;
+  font-size: medium;
+  -webkit-appearance: none;
 }
 
 input[type="date"],
 input[type="time"],
 input[type="month"],
 input[type="datetime-local"] {
-   -webkit-appearance: none; /* Remove default styling on iOS */
-            -moz-appearance: none; /* Remove default styling on Firefox */
-            appearance: none; /* Remove default styling */
+  -webkit-appearance: none; /* Remove default styling on iOS */
+  -moz-appearance: none; /* Remove default styling on Firefox */
+  appearance: none; /* Remove default styling */
   font-size: medium;
   text-align: left;
-  //padding: 5px;
-  
 }
 
 input[type="checkbox"],
@@ -198,8 +192,6 @@ input[type="radio"] {
 //   background-position: top right;
 //   background-repeat: no-repeat;
 // }
-
-
 
 // Grid system
 .row {
@@ -259,7 +251,6 @@ code {
   float: right;
 }
 
-
 .hide {
   display: none;
 }
@@ -282,7 +273,6 @@ code {
 
   [class*="col-"] {
     width: 100%;
-    
   }
 
   main {
@@ -292,6 +282,4 @@ code {
     margin: 0;
     background-color: var(--bg);
   }
-
-  
 }
