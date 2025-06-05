@@ -146,7 +146,7 @@ select,
 textarea {
   background-color: var(--bg-highlight);
   color: inherit;
-  margin: 6px 20px 6px 0;
+ // margin: 6px 20px 6px 0;
   padding: 5px;
   border-radius: var(--border-radius);
   width: 90%;
@@ -161,18 +161,10 @@ select {
 }
 
 select {
-  width: 98%;
+  width: 94%;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="month"],
-input[type="datetime-local"] {
-  height: 15.11px;
-  display: block;
-  font-size: 20px;
-  padding: 10px;
-}
+
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -180,18 +172,18 @@ input[type="radio"] {
   width: 1.5em;
 }
 
-input:user-invalid {
-  background-image: radial-gradient(red 15%, transparent 16%);
-  background-size: 2em 2em;
-  background-position: top right;
-  background-repeat: no-repeat;
-}
-input:user-valid {
-  background-image: radial-gradient(green 15%, transparent 16%);
-  background-size: 2em 2em;
-  background-position: top right;
-  background-repeat: no-repeat;
-}
+// input:user-invalid {
+//   background-image: radial-gradient(red 15%, transparent 16%);
+//   background-size: 2em 2em;
+//   background-position: top right;
+//   background-repeat: no-repeat;
+// }
+// input:user-valid {
+//   background-image: radial-gradient(green 15%, transparent 16%);
+//   background-size: 2em 2em;
+//   background-position: top right;
+//   background-repeat: no-repeat;
+// }
 
 
 
@@ -287,19 +279,5 @@ code {
     background-color: var(--bg);
   }
 
-  input[type="date"],
-  input[type="time"],
-  input[type="month"],
-  input[type="datetime-local"] {
-    font-size: 14px;
-    /* Solution 1 */
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    min-height: 1.2em;
-     padding: 5px;
-  }
-  select {
-    //min-height: 3em;
-    font-size: 14px;
-  }
+  
 }
