@@ -173,7 +173,8 @@ input[type="month"],
 input[type="datetime-local"] {
   font-size: medium;
   text-align: start;
-  padding: 5px;
+  //padding: 5px;
+  padding-top: 10px;
 }
 
 input[type="checkbox"],
