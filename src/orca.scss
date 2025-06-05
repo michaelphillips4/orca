@@ -167,7 +167,14 @@ select {
    -webkit-appearance: none;
 }
 
-
+input[type="date"],
+input[type="time"],
+input[type="month"],
+input[type="datetime-local"] {
+    font-family: monospace;
+    padding-inline-start: 1px;
+    cursor: default;
+}
 
 input[type="checkbox"],
 input[type="radio"] {
