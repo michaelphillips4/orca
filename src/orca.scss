@@ -171,11 +171,13 @@ input[type="date"],
 input[type="time"],
 input[type="month"],
 input[type="datetime-local"] {
+   -webkit-appearance: none; /* Remove default styling on iOS */
+            -moz-appearance: none; /* Remove default styling on Firefox */
+            appearance: none; /* Remove default styling */
   font-size: medium;
   text-align: left;
   //padding: 5px;
-  padding-top: 15px;
-  padding-bottom: 2px;
+  
 }
 
 input[type="checkbox"],
