@@ -34,10 +34,12 @@ const isString = (value: unknown): value is string =>
 // Dialog class for managing dialog elements
 class Dialog {
   static open(elementId: string): void {
-    show(elementId);
+   const dialog = getElementById(elementId) as HTMLDialogElement;
+   dialog.showModal();
   }
 
   static close(elementId: string): void {
-    hide(elementId);
+   const dialog = getElementById(elementId) as HTMLDialogElement;
+   dialog.close();
   }
 }
