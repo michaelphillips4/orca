@@ -34,11 +34,13 @@ const isString = (value: unknown): value is string =>
 // Dialog class for managing dialog elements
 class Dialog {
   static open(elementId: string): void {
+   document.body.style.opacity = '0.5';
    const dialog = getElementById(elementId) as HTMLDialogElement;
    dialog.showModal();
   }
 
   static close(elementId: string): void {
+     document.body.style.opacity = '1';
    const dialog = getElementById(elementId) as HTMLDialogElement;
    dialog.close();
   }

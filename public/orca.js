@@ -26,10 +26,12 @@ const isString = (value) => typeof value === "string" || value instanceof String
 // Dialog class for managing dialog elements
 class Dialog {
     static open(elementId) {
+        document.body.style.opacity = '0.5';
         const dialog = getElementById(elementId);
         dialog.showModal();
     }
     static close(elementId) {
+        document.body.style.opacity = '1';
         const dialog = getElementById(elementId);
         dialog.close();
     }
