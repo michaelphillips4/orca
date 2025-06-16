@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Orca 1.2</title>
+    <title>Orca 1.3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="orca.min.css" />
   </head>
@@ -9,18 +9,11 @@
     <main>
       <heading class="center">
         <h1>Orca</h1>
-        <nav>
-          <a href="/">home</a> ||
-          <a href="helpers.html">helpers</a> 
-      
-        </nav>
       </heading>
       <section>
         <p>
-          <b>Orca</b> is minimalist front end tool kit. 
-          It is intended to be easy to use and learn.
-          It offers some basic styling for html tags and has a
-          few easy to use classes. 
+          <b>Orca</b> is a collection of CSS styles to make simple static sites with semantic html.
+          Orca will manage the styling for you. It offers some basic styling for html tags.
         </p>
 
         <h2>Goals</h2>
@@ -29,41 +22,57 @@
             <li>Responsive</li>
             <li>Small size (&lt; 2.6kb)</li>
             <li>Make smart looking pages easily</li>
-          </ul>
-          <ul>
-            <li>Support light/dark themes</li>
-            <li>Css classes to allow responsive rows and cols</li>
-            <li>Css classes to center and hide show elements</li>
-          </ul>
-
-          <ul>
-            <li>Simple frame work in javascript (no node or react)</li>
-            <li>Hide and show helpers</li>
-            <li>Easy Dialog feature</li>
-          </ul>
+            <li>Support light/dark themes
+            </li>
+                </ul>
         </div>
       </section>
       <section>
         <h2>Setup</h2>
-        <p>Add this css and this js file to you header</p>
+        <p>Add this css file to you header</p>
 
         <p>
           <code>
             <x id="links">
-              &lt;link rel="stylesheet" href="https://orca1.orca-tools.com/orca.min.css" /&gt;
-              <br />
-              &lt;script src="https://orca1.orca-tools.com/orca.js"&gt;&lt;/script&gt;
+              &lt;link rel="stylesheet"
+              href="https://orca1.orca-tools.com/orca.min.css" /&gt;
+            
             </x>
             <button
               class="copy-button"
               onclick="navigator.clipboard.writeText(document.getElementById('links').innerText)"
             >
               copy
-            </button>
+            </button></code>
           </code>
         </p>
       </section>
       <section>
+        <h2>Main tag</h2>
+        Add a main tag in the body. This is where all your content goes.
+        <p>
+          The main tag is styled with a max-width of 1200px and centered on the
+          page. It will enable the page to be easily responsive.
+        </p>
+
+        <p>
+          <code>
+            <x id="main">
+              &lt;main&gt;
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;...content...
+              <br />
+              &lt;/main&gt;
+            </x>
+            <button
+              class="copy-button"
+              onclick="navigator.clipboard.writeText(document.getElementById('main').innerText)"
+            >
+              copy
+            </button>
+          </code>
+        </p>
+
         <h2>Typography</h2>
         <p>
           Lorem ipsum <b>bold</b> dolor sit amet,<i>italic</i> consectetur
@@ -134,7 +143,7 @@
         <div class="row">
           <div class="col-4">
             <label for="text">input type = text</label>
-            <input type="text" id="text" required/>
+            <input type="text" id="text" required />
 
             <label for="tel">input type = tel</label>
             <input type="tel" id="tel" />
@@ -164,7 +173,7 @@
 
             <label for="time">input type = time</label>
             <input type="time" />
-            
+
             <label for="select">select</label>
             <select id="select">
               <option>item one</option>
@@ -212,17 +221,81 @@
         </div>
       </section>
 
+      <!-- <section>
+        <h2>Classes</h2>
+        <h3>.row and col-1 - col-12</h3>
+        <p>
+          They allow you to create rows with segments dived by 12 on large
+          screens and will stack on smaller ones.
+        </p>
+
+        <div class="row">
+          <div class="col-4">
+            <b>col-4</b> Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in repre
+          </div>
+          <div class="col-4">
+            <b>col-4</b> Ut enim ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident.
+          </div>
+          <div class="col-4">
+            <b>col-4</b> Duis aute irure dolor in reprehenderit in voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </div>
+        </div>
+
+        <p><b>.center</b> Will center text.</p>
+
+        <p><b>.right</b> Will align to the right.</p>
+      </section> -->
+
       <style>
         .rl {
           padding-top: 5px;
           padding-right: 5px;
         }
         .copy-button {
+          margin-top: 30px;
           float: right;
         }
       </style>
     </main>
 
-    <footer class="center">v1.2 by Michael Phillips <a href="https:\\www.orca-tools.com">Home</a></footer>
+    <footer class="center">
+      v1.3 by Michael Phillips <a href="https:\\www.orca-tools.com">Home</a>
+    </footer>
+    <script>
+      const toggleButton = document.getElementById('toggle-button');
+const body = document.body;
+
+// Check for saved user preference
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark');
+} else {
+    body.classList.add('light');
+}
+
+// Toggle function
+toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
+
+    // Save user preference
+    if (body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+    </script>
   </body>
 </html>
